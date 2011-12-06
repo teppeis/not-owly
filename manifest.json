@@ -1,0 +1,19 @@
+{
+"update_url":"http://clients2.google.com/service/update2/crx",
+  "name": "Not ow.ly for HootSuite",
+  "description": "Fix HootSuite to use bit.ly instead of ow.ly.",
+  "version": "0.2",
+  "icons": {
+    "16":  "icon/icon16.png",
+    "48":  "icon/icon48.png",
+    "128": "icon/icon128.png"
+  },
+  "background_page": "background.html",
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": ["http://hootsuite.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

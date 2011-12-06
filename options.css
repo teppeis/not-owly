@@ -1,0 +1,107 @@
+body{
+    font-family:"Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+p, h1, h2, h3, form, button{border:0; margin:0; padding:0;}
+
+.spacer{clear:both; height:1px;}
+
+.myform{
+    margin:0 auto;
+    width:400px;
+    padding:14px;
+}
+#stylized{
+    border:solid 2px #b7ddf2;
+    background:#ebf4fb;
+}
+#stylized h1 {
+    font-size:12px;
+    font-weight:normal;
+}
+#stylized h2 {
+    font-size:16px;
+    font-weight:bold;
+    margin:4px 0;
+}
+#stylized h3 {
+    font-size:12px;
+    font-weight:bold;
+    margin-top:15px;
+    border-top:solid 1px #b7ddf2;
+    padding-top:5px;
+    margin-bottom:8px;
+}
+#stylized p{
+    font-size:11px;
+    color:#666666;
+    margin-bottom:10px;
+}
+#stylized label{
+    display:block;
+    font-weight:bold;
+    text-align:right;
+    width:120px;
+    line-height:23px;
+    margin-top:2px;
+    float:left;
+}
+#stylized input{
+    float:left;
+    font-size:12px;
+    padding:4px 2px;
+    border:solid 1px #aacfe4;
+    width:260px;
+    margin:2px 0 5px 8px;
+}
+#stylized button{
+    clear:both;
+    margin-top:15px;
+    margin-left:128px;
+    width:125px;
+    height:32px;
+    text-align:center;
+    line-height:30px;
+    color:#FFFFFF;
+    font-size:11px;
+    font-weight:bold;
+}
+
+input[type="button"],
+input[type="submit"],
+button{
+    -webkit-appearance: button;
+    color:#ffffff;
+    background: -webkit-gradient(linear, left top, left bottom,
+    from(#777777), to(#333333));
+    border: 1px solid #999999;
+    border-radius: 6px;
+    padding: 0 0.6em;
+    vertical-align: middle;
+}
+input[type="button"]:hover,
+input[type="submit"]:hover,
+button:hover{
+    background: -webkit-gradient(linear, left top, left bottom,
+    from(#999999), to(#666666));
+}
+input[type="button"][disabled],
+input[type="submit"][disabled],
+button[disabled]{
+    background:#999999;
+}
+input[type="button"][disabled]:hover,
+input[type="submit"][disabled]:hover,
+button[disabled]:hover{
+    background:#999999;
+}
+
+#statusMessage {
+    margin-top: 5px;
+}
+.success {
+    color:#0a0;
+}
+.error {
+    color:#a00;
+}

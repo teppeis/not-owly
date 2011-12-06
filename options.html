@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Options | Not ow.ly for HootSuite</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="options.css" type="text/css">
+<script type="text/javascript" src="jquery-1.4.js"></script>
+<script type="text/javascript">
+$(function(){
+  var list = ['bitly_name', 'bitly_key'];
+  list.forEach(function(value){
+    $('#' + value).val(restore(value));
+  });
+
+  $('form').submit(function(){
+    var btn = $('#submitBtn').attr('disabled', 'disabled');
+    var name = $('#bitly_name').val();
+    var key = $('#bitly_key').val();
+    var data = {
+      login: name,
+      apiKey: key,
+      hash: 'whatsup',
+      format: 'json'
+    };
+    var url = 'http://api.bit.ly/v3/expand';
+    var msg = $('#statusMessage');
+    $.ajax({url:url, data:data, type:'GET', dataType:'jsonp', success:function(res){
+        if (res.status_code == 200) {
+          save('bitly_name', name);
+          save('bitly_key', key);
+          msg.removeClass().addClass('success');
+          msg.text('Options Saved.');
+          highlight();
+        } else {
+          msg.removeClass().addClass('error');
+          msg.text('Error: ' + res.status_txt);
+          highlight();
+        }
+      }, error:function(){
+        msg.removeClass().addClass('error');
+        msg.text('Connection error.');
+        highlight();
+      }
+    });
+
+    function highlight() {
+      msg.show('normal', function(){
+        setTimeout(function(){
+          msg.hide('normal');
+          btn.removeAttr('disabled');
+        }, 1500);
+      });
+    }
+
+    return false;
+  });
+});
+
+function save(key, value) {
+  localStorage[key] = value;
+}
+
+function restore(key) {
+  var value = localStorage[key];
+  if (value === void 0) value = '';
+  return value;
+}
+</script>
+</head>
+
+<body>
+
+<div id="stylized" class="myform">
+<form id="form" name="form" action="#">
+<h1>Not ow.ly for <a href="http://hootsuite.com/" target="_blank">HootSuite</a></h1>
+<h2>Options</h2>
+
+<h3>bit.ly account</h3>
+<p>If you don't have a bit.ly account, signup at: <a href="http://bit.ly/a/sign_up" target="_blank">http://bit.ly/a/sign_up</a><br>
+Then, you can find your apiKey at: <a href="http://bit.ly/a/your_api_key" target="_blank">http://bit.ly/a/your_api_key</a>
+</p>
+
+<label>bit.ly login :</label>
+<input type="text" name="bitly_name" id="bitly_name" />
+
+<label>bit.ly API key :</label>
+<input type="text" name="bitly_key" id="bitly_key" />
+
+<button type="submit" id="submitBtn">Save</button>
+
+<div id="statusMessage" style="display:none;"></div>
+
+<div class="spacer"></div>
+
+</form>
+</div>
+
+</body>
+</html>
